@@ -1,0 +1,4 @@
+rootProject.name = 'spammayo'
+include 'spammayo-api'
+include 'spammayo-common'
+

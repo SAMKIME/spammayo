@@ -1,0 +1,7 @@
+.gradle
+.idea
+gradle
+
+/spammayo-api/build/
+
+**.iml
