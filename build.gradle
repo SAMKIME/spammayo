@@ -33,7 +33,7 @@ subprojects {
     }
 }
 
-project(':spammayo-api') {
+project('spammayo-api') {
     dependencies {
         implementation('org.springframework.boot:spring-boot-starter-webflux')
     }
