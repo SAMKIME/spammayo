@@ -1,12 +1,12 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.6.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 allprojects {
-    apply plugin: "java"
-    apply plugin: "org.springframework.boot"
-
     group 'io.samkime'
     version '0.0.1'
 
@@ -15,8 +15,26 @@ allprojects {
     }
 }
 
-project('spammayo-api') {
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
     dependencies {
-        implementation('org.springframework.boot:spring-boot-starter-webflux:2.6.2')
+        compileOnly('org.projectlombok:lombok')
+        annotationProcessor('org.projectlombok:lombok')
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom SpringBootPlugin.BOM_COORDINATES
+        }
+    }
+}
+
+project(':spammayo-api') {
+    dependencies {
+        implementation('org.springframework.boot:spring-boot-starter-webflux')
     }
 }
