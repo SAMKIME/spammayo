@@ -13,10 +13,26 @@ allprojects {
     repositories {
         mavenCentral()
     }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok:1.18.22'
+        annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+        testCompileOnly 'org.projectlombok:lombok:1.18.22'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+    }
 }
 
 project('spammayo-api') {
     dependencies {
         implementation('org.springframework.boot:spring-boot-starter-webflux:2.6.2')
+    }
+}
+
+project('spammayo-common') {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.6.2'
+        runtimeOnly 'mysql:mysql-connector-java:8.0.27'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
     }
 }
